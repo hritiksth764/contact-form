@@ -3,6 +3,7 @@ const path = require("path");
 const dotenv = require("dotenv");
 const AWS = require("aws-sdk");
 const { v4: uuidv4 } = require("uuid");
+const stringify = require("csv-stringify");
 
 dotenv.config();
 
@@ -26,22 +27,38 @@ app.post("/api/submit", async (req, res) => {
   try {
     const formData = req.body;
     const timestamp = new Date().toISOString();
-    const fileName = `submissions/${uuidv4()}-${timestamp}.json`;
+    const fileName = `submissions/${uuidv4()}-${timestamp}.csv`;
 
-    const params = {
-      Bucket: bucketName,
-      Key: fileName,
-      Body: JSON.stringify(formData, null, 2),
-      ContentType: "application/json",
-    };
+    const csvData = [];
+    csvData.push(Object.keys(formData));
+    csvData.push(Object.values(formData));
 
-    await s3.upload(params).promise();
+    stringify(csvData, (err, output) => {
+      if (err) {
+        throw err;
+      }
 
-    res
-      .status(200)
-      .json({ message: "Form submitted successfully", data: formData });
+      const params = {
+        Bucket: bucketName,
+        Key: fileName,
+        Body: output,
+        ContentType: "text/csv",
+      };
+
+      s3.upload(params)
+        .promise()
+        .then(() => {
+          res
+            .status(200)
+            .json({ message: "Form submitted successfully", data: formData });
+        })
+        .catch((error) => {
+          console.error("Error uploading data:", error);
+          res.status(500).json({ message: "Server error", error });
+        });
+    });
   } catch (error) {
-    console.error("Error uploading data:", error);
+    console.error("Error processing data:", error);
     res.status(500).json({ message: "Server error", error });
   }
 });
