@@ -1,0 +1,62 @@
+html,
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  /* Ensures that body takes the full height */
+}
+
+body {
+  background: url("image.JPG") no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto; /* Allows scrolling if content overflows */
+}
+
+form {
+  max-width: 600px; /* Adjust width to fit better on smaller screens */
+  margin: 20px;
+  padding: 15px; /* Reduce padding for smaller screens */
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Slightly transparent background for the form */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: white; /* Ensure text is visible against the background */
+}
+
+label {
+  display: block;
+  margin: 15px 0 5px;
+}
+
+input,
+select,
+textarea,
+button {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 12px; /* Adjust font size for better readability on mobile */
+}
+
+button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 8px; /* Adjust button padding for better fit on mobile */
+  font-size: 12px; /* Adjust font size for better readability on mobile */
+}
+
+button:hover {
+  background-color: #45a049;
+}

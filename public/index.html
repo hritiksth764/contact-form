@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <form id="contactForm">
+      <h1>Manifesto Crowdsourcing Questionnaire</h1>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="phoneNumber">Phone Number:</label>
+      <input
+        type="tel"
+        id="phoneNumber"
+        name="phoneNumber"
+        pattern="[0-9]{10}"
+        required
+      />
+
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" min="18" max="99" required />
+
+      <label for="district">District:</label>
+      <input type="text" id="district" name="district" required />
+
+      <label
+        >Mazhya swapnatil maharashtrat kay nako (highlight issues imp. for
+        YOU):</label
+      >
+      <div>
+        <!-- <input
+          type="checkbox"
+          id="unemployment"
+          name="issues"
+          value="unemployment"
+        /> -->
+        <label for="unemployment">Rising Unemployment</label>
+      </div>
+      <div>
+        <input type="checkbox" id="crime" name="issues" value="crime" />
+        <label for="crime">Rise in Crime</label>
+      </div>
+      <div>
+        <input type="checkbox" id="inflation" name="issues" value="inflation" />
+        <label for="inflation">Rising Inflation</label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="corruption"
+          name="issues"
+          value="corruption"
+        />
+        <label for="corruption">Rise in Corruption</label>
+      </div>
+      <div>
+        <input type="checkbox" id="language" name="issues" value="language" />
+        <label for="language">Marathi bhasha abhijat darja</label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="unfairTreatment"
+          name="issues"
+          value="unfairTreatment"
+        />
+        <label for="unfairTreatment"
+          >Maharashtra being treated unfairly (projects going to Other
+          states)</label
+        >
+      </div>
+      <div>
+        <input type="checkbox" id="honor" name="issues" value="honor" />
+        <label for="honor">Mahapurushanche apaman</label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="falsePromises"
+          name="issues"
+          value="falsePromises"
+        />
+        <label for="falsePromises">False promises of BJP</label>
+      </div>
+      <input
+        type="checkbox"
+        id="unemployment"
+        name="issues"
+        value="unemployment"
+      />
+
+      <label for="dream"
+        >What according to you is tumchya swapnatil Maharashtra?</label
+      >
+      <textarea
+        id="dream"
+        name="dream"
+        rows="4"
+        maxlength="500"
+        required
+      ></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <script src="scripts.js"></script>
+  </body>
+</html>
